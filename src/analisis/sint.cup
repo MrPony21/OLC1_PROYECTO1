@@ -1,0 +1,41 @@
+package analisis;
+import java_cup.runtime.*;
+
+parser code
+{://codigo visible
+
+    public void syntax_error(Symbol s){
+        System.out.println("Error R de sintaxis: "+s.value +" Linea "+ (s.left+1)+ " Columna "+ (s.right+1));
+    }
+     public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception{ 
+        System.out.println("Error NR de sintaxis: "+ s.value +" Linea "+(s.left+1)+" columna "+(s.right+1) );
+    }
+:}
+
+//terminales
+terminal String GUION,GUION_BAJO,MAYOR,MENOR,DOS_PUNTOS,DIAG,PORC,COR_IZQ,COR_DER,PUNTOCOMA,EQUI,CONC,DIS,ASTER,MAS,INTERROGACION,COM_SIMPLE,COM_DOBLE;
+terminal String NUM;
+terminal String DECIMAL;
+terminal String COMENT_ONELINE;
+terminal String COMENT_MORLINE;
+terminal String IDENTIFICADOR;
+terminal String CONJUNTO;
+terminal String ASCII;
+
+//no terminales
+non terminal ini;
+non terminal instrucciones;
+non terminal instruccion;
+non terminal Double expresion;
+
+//precedence
+
+
+// 
+start with ini;
+
+
+ini::= ini expresion
+    | expresion;
+
+expresion::= GUION|GUION_BAJO|MAYOR|MENOR|DOS_PUNTOS|DIAG|PORC|COR_IZQ|COR_DER|PUNTOCOMA|EQUI|CONC|DIS|ASTER|MAS|INTERROGACION|COM_SIMPLE|COM_DOBLE|NUM|DECIMAL|COMENT_ONELINE|COMENT_MORLINE|IDENTIFICADOR|CONJUNTO|ASCII;
