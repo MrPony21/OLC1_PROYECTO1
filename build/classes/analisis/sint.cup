@@ -13,29 +13,85 @@ parser code
 :}
 
 //terminales
-terminal String GUION,GUION_BAJO,MAYOR,MENOR,DOS_PUNTOS,DIAG,PORC,COR_IZQ,COR_DER,PUNTOCOMA,EQUI,CONC,DIS,ASTER,MAS,INTERROGACION,COM_SIMPLE,COM_DOBLE;
+terminal String GUION,GUION_BAJO,DOS_PUNTOS, PORC, COR_IZQ, COR_DER, PUNTOCOMA, EQUI, DIS, MAS, INTERROGACION, COM_SIMPLE, COM_DOBLE, MAYOR, CONC, ASTERISCO, COMA;
 terminal String NUM;
 terminal String DECIMAL;
-terminal String COMENT_ONELINE;
-terminal String COMENT_MORLINE;
+terminal String CHAR_MAY;
+terminal String CHAR_MIN;
 terminal String IDENTIFICADOR;
+terminal String ESPECIALES;
+terminal String CADENA;
 terminal String CONJUNTO;
-terminal String ASCII;
+//terminal String ASCII;
 
 //no terminales
 non terminal ini;
 non terminal instrucciones;
 non terminal instruccion;
-non terminal Double expresion;
-
+non terminal expresion;
+non terminal first;
+non terminal last;
+non terminal notation;
+non terminal con_coma;
+non terminal normal;
+non terminal comprobacion;
 //precedence
 
 
+
+
+
+
+
+
 // 
-start with ini;
+start with ini; 
+
+ini::= COR_IZQ first PORC PORC PORC PORC last COR_DER;
+
+first ::= first instruccion|
+          instruccion;
+
+instruccion::= CONJUNTO DOS_PUNTOS IDENTIFICADOR GUION MAYOR notation PUNTOCOMA|
+               IDENTIFICADOR GUION MAYOR expresion PUNTOCOMA;
+
+notation::= CHAR_MAY EQUI CHAR_MAY|
+            CHAR_MIN EQUI CHAR_MIN|
+            NUM EQUI NUM|
+            con_coma;
+            //faltan los acsii
+
+con_coma::= con_coma COMA normal|
+            normal;
 
 
+normal::= CHAR_MAY|
+          CHAR_MIN|
+          NUM;
+          //faltan los acsii
+
+
+expresion::= CONC expresion expresion|
+             DIS expresion expresion|
+             ASTERISCO expresion|
+             MAS expresion|
+             INTERROGACION expresion|
+             COR_IZQ IDENTIFICADOR COR_DER|
+             ESPECIALES;
+
+
+
+last::= last comprobacion|
+        comprobacion;
+
+
+comprobacion::= IDENTIFICADOR DOS_PUNTOS CADENA PUNTOCOMA;
+
+
+
+/*
 ini::= ini expresion
     | expresion;
 
-expresion::= GUION|GUION_BAJO|MAYOR|MENOR|DOS_PUNTOS|DIAG|PORC|COR_IZQ|COR_DER|PUNTOCOMA|EQUI|CONC|DIS|ASTER|MAS|INTERROGACION|COM_SIMPLE|COM_DOBLE|NUM|DECIMAL|COMENT_ONELINE|COMENT_MORLINE|IDENTIFICADOR|CONJUNTO|ASCII;
+expresion::= GUION|GUION_BAJO|MAYOR|DOS_PUNTOS|PORC|COR_IZQ|COR_DER|PUNTOCOMA|EQUI|CONC|DIS|ASTERISCO|MAS|INTERROGACION|COM_SIMPLE|COM_DOBLE|NUM|DECIMAL|COMENT_ONELINE|COMENT_MORLINE|IDENTIFICADOR|CONJUNTO;
+*/

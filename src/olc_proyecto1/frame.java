@@ -4,6 +4,16 @@
  */
 package olc_proyecto1;
 
+import analisis.parser;
+import analisis.scanner;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author Admin
@@ -65,6 +75,7 @@ public class frame extends javax.swing.JFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.setToolTipText("");
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton4.setText("Generar Automata");
@@ -141,7 +152,22 @@ public class frame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        JFileChooser archivo = new JFileChooser();
+        archivo.showOpenDialog(this);
+        String f = archivo.getSelectedFile().getAbsolutePath();
+        
+        try (FileReader read = new FileReader(f)){
+            String cadena = "";
+            int valor = read.read();
+            while (valor!= -1) {
+                cadena = cadena + (char) valor;
+                valor = read.read();
+            }
+            jTextArea1.setText(cadena);
+        } catch (IOException ex) {
+            Logger.getLogger(frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -150,6 +176,11 @@ public class frame extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        String text = jTextArea1.getText();
+        analizar(text);
+        //System.out.println(text);
+        
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -206,4 +237,58 @@ public class frame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
+
+
+
+
+    private void analizar(String texto){
+        /*
+        try{
+            scanner scanner = new scanner(new java.io.StringReader(texto));
+            parser sint = new parser(scanner);
+            sint.parse();
+            System.out.println("Se ha analizado correctamente");
+        } catch (Exception e){
+            e.printStackTrace();
+        }*/
+        
+        System.out.println("hola");
+        //Aqui llamaremos para crear el arbol
+        
+       // String exp = ". {abecedarioMinus} * | \"_\" | {abecedarioMinus} {digito};";
+        //String exp = "...ab*b*|ba";
+        //String exp = ".a*|b|ac";
+        String exp = ".a.+||||bcdefg";
+        
+        
+        ArrayList<nodo> leaves = new ArrayList();
+        ArrayList<ArrayList> table = new ArrayList();
+        
+        
+        exp = "."+ exp +"#";
+        
+        tree arbol = new tree(exp, leaves, table);
+        nodo raiz = arbol.getRoot();
+        
+        raiz.getNodo();
+        raiz.siguientes();
+        
+        System.out.println("TABLA DE SIGUIENTES: \n");
+        
+        table tabla = new table();
+        tabla.PrintTable(table);
+        
+        System.out.println("Se ha generado la tabla de siguientes");
+        
+        
+        
+        
+    }
+    
+    
+
 }
+
+
+
+

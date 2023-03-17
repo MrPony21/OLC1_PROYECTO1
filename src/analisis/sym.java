@@ -8,61 +8,61 @@ package analisis;
 /** CUP generated class containing symbol constants. */
 public class sym {
   /* terminals */
-  public static final int INTERROGACION = 17;
+  public static final int INTERROGACION = 12;
   public static final int GUION = 2;
-  public static final int MENOR = 5;
-  public static final int PORC = 8;
-  public static final int DIAG = 7;
-  public static final int CONJUNTO = 25;
+  public static final int PORC = 5;
+  public static final int CADENA = 25;
+  public static final int CONJUNTO = 26;
+  public static final int ESPECIALES = 24;
   public static final int GUION_BAJO = 3;
-  public static final int DECIMAL = 21;
-  public static final int COMENT_MORLINE = 23;
-  public static final int NUM = 20;
-  public static final int COM_DOBLE = 19;
-  public static final int COM_SIMPLE = 18;
-  public static final int DOS_PUNTOS = 6;
-  public static final int EQUI = 12;
-  public static final int COMENT_ONELINE = 22;
-  public static final int MAYOR = 4;
+  public static final int DECIMAL = 20;
+  public static final int NUM = 19;
+  public static final int COM_DOBLE = 14;
+  public static final int DOS_PUNTOS = 4;
+  public static final int COM_SIMPLE = 13;
+  public static final int EQUI = 9;
+  public static final int COMA = 18;
+  public static final int ASTERISCO = 17;
+  public static final int MAYOR = 15;
   public static final int EOF = 0;
-  public static final int ASTER = 15;
-  public static final int DIS = 14;
+  public static final int CHAR_MIN = 22;
+  public static final int CHAR_MAY = 21;
+  public static final int DIS = 10;
   public static final int error = 1;
-  public static final int IDENTIFICADOR = 24;
-  public static final int COR_IZQ = 9;
-  public static final int PUNTOCOMA = 11;
-  public static final int CONC = 13;
-  public static final int ASCII = 26;
-  public static final int COR_DER = 10;
-  public static final int MAS = 16;
+  public static final int IDENTIFICADOR = 23;
+  public static final int COR_IZQ = 6;
+  public static final int PUNTOCOMA = 8;
+  public static final int CONC = 16;
+  public static final int COR_DER = 7;
+  public static final int MAS = 11;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
   "GUION",
   "GUION_BAJO",
-  "MAYOR",
-  "MENOR",
   "DOS_PUNTOS",
-  "DIAG",
   "PORC",
   "COR_IZQ",
   "COR_DER",
   "PUNTOCOMA",
   "EQUI",
-  "CONC",
   "DIS",
-  "ASTER",
   "MAS",
   "INTERROGACION",
   "COM_SIMPLE",
   "COM_DOBLE",
+  "MAYOR",
+  "CONC",
+  "ASTERISCO",
+  "COMA",
   "NUM",
   "DECIMAL",
-  "COMENT_ONELINE",
-  "COMENT_MORLINE",
+  "CHAR_MAY",
+  "CHAR_MIN",
   "IDENTIFICADOR",
-  "CONJUNTO",
-  "ASCII"
+  "ESPECIALES",
+  "CADENA",
+  "CONJUNTO"
   };
 }
 
