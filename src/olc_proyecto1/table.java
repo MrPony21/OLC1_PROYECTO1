@@ -54,9 +54,31 @@ public class table {
         for(ArrayList item: table){
             System.out.println(item.get(0)+" - "+item.get(1)+ " - "+item.get(2));
         }
-    }            
-            
+    }  
     
     
+    public void OrdenamientoBurbuja(ArrayList<ArrayList> table){
+        for (int i = 0; i < table.size() - 1; i++) {
+            for (int j = 0; j < table.size() - 1 - i; j++) {
+                int num1 = Integer.parseInt(table.get(j).get(0).toString());
+                int num2 = Integer.parseInt(table.get(j+1).get(0).toString());
+                if (num1 > num2) {
+                    ArrayList<Integer> temp = table.get(j);
+                    table.set(j, table.get(j+1));
+                    table.set(j+1, temp);
+                }
+            }
+        }
+        
+        
+    }
+    
+    
+     
+   
+         
     
 }
+
+
+
