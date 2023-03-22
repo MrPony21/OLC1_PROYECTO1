@@ -296,6 +296,8 @@ public class frame extends javax.swing.JFrame {
         
         
         transicion transicion = new transicion();
+        transicion.crear_estados(table);
+        transicion.PrintEstados();
 
         transicion.getTransition(raiz.first, table);
         
