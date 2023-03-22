@@ -13,178 +13,140 @@ import java.util.List;
  */
 public class transicion {
    
-              
-        ArrayList <ArrayList> tran = new ArrayList();
-        ArrayList <String> terminales = new ArrayList();
-        
-        
-        public void Introducir_Terminales(ArrayList <String> terminalesA){
-            
-            for(String ter: terminalesA){
-                
-                if (terminales == null){
-                     terminales.add(ter);
-                }else{
-                    
-                    if (!terminales.contains(ter)){
-                        terminales.add(ter);
-                    }
+        ArrayList <trans> transiciones = new ArrayList <trans>();
 
-                }
-                
-                
-                
-            }
-            
-        }
-        
-        
-        public void printTerminales(){
-            
-            for(String ter: terminales){
-                
-                System.out.println(ter);
-                
-            }
-            
-        }
-       
-        
         public void getTransition(ArrayList <Integer> first ,ArrayList<ArrayList> table){
         
-       
-        //todo esto unicamente para crear la tabla del estado 0
-        ArrayList <Integer> transiciones_estado0 = new ArrayList();
-       
-        ArrayList estado = new ArrayList();
+        //primero se crea las transiciones del estado 0
+        int contador = 1; 
+        boolean primero = true;
+        ArrayList<repetido> repetidos = new ArrayList<repetido>();
+        int calcular_state = 0;
         
-        String s0 = "";
-        //en este for asignaremos el primer estado
-        for(int sig : first){
+        
+        for (Integer fir: first){
             
-            for (ArrayList item: table){
-                if (sig == ((Integer) item.get(0)).intValue()){
-                   // System.out.println("Se ha encontrado "+ sig);
-                    s0 += sig+",";  
+            for(ArrayList tab: table){
+                
+                if (fir == tab.get(0)){
+                    System.out.println("Se econtro una vez");
+                    System.out.println(tab.get(2));
                     
-                    transiciones_estado0.add(sig);
+                    String terminal = (String)tab.get(1);
+                    ArrayList <Integer> sig = (ArrayList<Integer>) tab.get(2);
+                    String calculo = Integer.toString(calcular_state);
+                    String ini = "S"+calculo;
+                    trans nueva_trans = new trans(ini,terminal , sig);
+                    
+                    //aqui haremos los finales
+                    
+                    if (primero){
+                        
+                        String state = Integer.toString(contador);
+                        String fin = "S"+state;
+                        nueva_trans.setFinal(fin);
+                        repetido rep = new repetido(sig,fin);
+                        repetidos.add(rep);
+                        primero = false;
+                        contador++;
+                        
+                    }
+                    
+                    boolean encontrar = false;
+                    if (repetidos != null){  
+                        for(repetido repe: repetidos){      
+                            if (repe.Siguientes == sig){
+                                nueva_trans.setFinal(repe.Final_state);
+                                encontrar = true;
+                                break;
+          
+                        }
+                    }
+                        
+                    if (encontrar == false){
+                        
+                        String Ostate = Integer.toString(contador);
+                        String Ofin = "S"+Ostate;
+                        nueva_trans.setFinal(Ofin);
+                        repetido rep = new repetido(sig,Ofin);
+                        repetidos.add(rep);
+                        contador++;
+                    }
+                    
+
+                    transiciones.add(nueva_trans);
+                    
                 }
                 
+                
             }
-            
-        }
-        
-        estado.add("s0 ["+s0+"]");
-        System.out.println(estado);
-        
-        for(ArrayList item2: table){
-            estado.add("-");
-        }
 
-        for(ArrayList item: table){      
-            for (String item2: terminales){
-                String str = item.get(1).toString();
-                System.out.println(str);
-                String stritem2 = item2.toString();
-                System.out.println(str+"se compara con :"+stritem2);
-                System.out.println(str==stritem2);
-                if (str == item2){                    
-                    System.out.println("se encontroesto"+ item.get(1));
-                    estado.set(item2.indexOf(str),item.get(1));                                                
-                }else{                  
-                  //  System.out.println("No se encontro esto: "+item.get(0));
-                  
-                }       
-            }
-        }
-        
-        tran.add(estado);
-        
-        //AQUI CREAREMOS TODO LO DEMAS
-        /*
-        int numestado = 1;
-        for(ArrayList item: table){
-            
-            agregarestado(item,numestado ,item.get(2),estado, table);
-            numestado++;
             
         }
-        */
+            
+        //for repetidos.get(0)
+       
         
+     
+        
+        
+        //DefinirFinales();
         
         imprimir();
         
-        
-        
-        
+
+    }
     }
         
         
-    public void agregarestado(ArrayList<ArrayList> item, int  numestate ,Object siguientes , ArrayList estado, ArrayList <ArrayList>table){
+    public void DefinirFinales(){
         
-        int numestado = numestate;
-        ArrayList nuevo = new ArrayList();
-        ArrayList <Integer> transiciones = new ArrayList();
-        System.out.println(tran.size());
-            
+        int estado = 1;
+        for (int i = 0; i < transiciones.size(); i++) {
         
-        
-        System.out.println("se asigno el estado S1");
-        nuevo.add("S"+numestado+" ["+siguientes+"]");
-        System.out.println("S"+numestado+" ["+siguientes+"]");
-        /*
-        for (int i = 0; i < tran.size(); i++) {
-
-            for (int j = 0; j < estado.size(); j++) {
-                if (item.get(1) == tran.get(i).get(j) ){
+                trans tr = transiciones.get(i);
+                String inicial = tr.Inicial;
+                ArrayList<Integer> sig = tr.Siguientes;
+                
+                for (int j = 0; j < transiciones.size(); j++) {
+                
+                    trans tr2 = transiciones.get(j);
                     
-
-                    System.out.println("se asigno el estado S1");
-                    nuevo.add("S"+numestado+" ["+siguientes+"]");
-                    System.out.println("S"+numestado+" ["+siguientes+"]");
+                    if (inicial == tr2.Inicial){
+                        
+                        if (sig == tr2.Siguientes){
+                            
+                            String state = Integer.toString(estado);
+                            String fin = "S"+state;
+                            tr.setFinal(fin);
+                            tr2.setFinal(fin);
+                            
+                        }else{
+                            String state = Integer.toString(estado);
+                            String fin = "S"+state;
+                            estado++;
+                            
+                            
+                        }
+                        
+                        
+                        
+                    }
                     
                     
                     
-
-                }
             }
-
-
-        }*/
-        
-        //AQUI ESTA EL ERROR
-        List<Object> numeros = (List<Object>) siguientes;
-        int[] arrayNumeros = numeros.stream()
-                .mapToInt(o -> Integer.parseInt(o.toString()))
-                .toArray();
-
-
-        for (int k = 0; k < arrayNumeros.length; k++) {
-            transiciones.add(arrayNumeros[k]);
+            
+            
+            
         }
+        
+        
+        
+    }    
         
    
-        for(ArrayList item2: table){
-            nuevo.add("-");
-        }
-            
-        for(ArrayList i: table){      
-            for (Integer item2: transiciones){
-                if (i.get(0)== item2){                    
-                  //  System.out.println("se encontroesto"+ i.get(0));
-                    nuevo.set(item2, i.get(1));                                                
-                }else{                  
-                //    System.out.println("No se encontro esto: "+i.get(0));
-                }       
-            }
-        }
         
-        
-        tran.add(nuevo);
-
-                
-        
-    }
     
     
     
@@ -192,9 +154,9 @@ public class transicion {
         
     public void imprimir(){
         
-        for (int i = 0; i < tran.size(); i++) {
-            
-            System.out.println(tran.get(i));
+        for (int i = 0; i < transiciones.size(); i++) {
+            trans tr = transiciones.get(i);
+            System.out.println("("+tr.Inicial+","+tr.terminal+") - "+tr.Siguientes+" - "+tr.Final);
             
         }
         
@@ -203,16 +165,24 @@ public class transicion {
         
     }
     
+   
+    
+}
+
+
+class repetido{
     
     
-        
+    ArrayList<Integer> Siguientes;
+    String Final_state;
     
     
+    public repetido(ArrayList<Integer> siguientes, String final_state){
+        this.Siguientes = siguientes;
+        this.Final_state = final_state;
+    }
     
     
-        
-        
-        
     
     
 }

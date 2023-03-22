@@ -4,34 +4,40 @@
  */
 package olc_proyecto1;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Admin
  */
 public class trans {
     
-    public String initialState;
-    public String transition;
-    public String finalState;
     
-    public trans( String initialState, String transition, String finalState ) {
-        this.initialState = initialState;
-        this.transition = transition;
-        this.finalState = finalState;
-    }
+    String Inicial;
+    String terminal;
+    ArrayList <Integer> Siguientes = new ArrayList();
+    String Final;
     
-    public boolean compare(String initialState, String transition){
+    
+    
+    public trans(String Inicial, String terminal, ArrayList <Integer> Siguientes){
+        this.Inicial = Inicial;
+        this.terminal = terminal;
+        this.Siguientes = Siguientes;
+        //this.Final = Final;
         
-        return this.initialState.equals(initialState) && this.transition.equals(transition);
+
     }
     
-    @Override
-    public String toString(){
-        return this.initialState + " -> " + this.transition + " -> " + this.finalState;
-    }
-    
-    public String graph(){
-        return this.initialState +  "->"  + this.finalState + "[label=\"" + this.transition + "\"]";
+   
+    public void setFinal(String Final){
+        this.Final = Final;
     }
     
 }
+    
+    
+    
+    
+    
+

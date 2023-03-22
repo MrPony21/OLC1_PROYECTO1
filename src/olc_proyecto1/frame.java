@@ -252,25 +252,18 @@ public class frame extends javax.swing.JFrame {
             e.printStackTrace();
         }*/
         
-        System.out.println("hola");
+        
         //Aqui llamaremos para crear el arbol
         
        // String exp = ". {abecedarioMinus} * | \"_\" | {abecedarioMinus} {digito};";
-        String exp = "...ab*b*|ba";
+       // String exp = "...ab*b*|ba";
        // String exp = ".a*|b|ac";
-        //String exp = ".a.+||||bcdefa"; //MEDIO
+        String exp = ".a.+||||bcdefa"; //MEDIO
        //String exp = ".a.b.b.c.?d.e.f.f.+g.h+g"; //ABVANZADO
        //String exp = ".|ab.+|||cabd.e.+|ab.f.g.hi";
                     
         
-        ArrayList <String> terminales = new ArrayList();
-        terminales.add("a");
-        terminales.add("b");
-        terminales.add("c");
-        terminales.add("d");
-        terminales.add("e");
-        terminales.add("f");
-        terminales.add("a");
+    
          
        
         
@@ -302,20 +295,11 @@ public class frame extends javax.swing.JFrame {
         System.out.println(raiz.first);
         
         
-        //transicion transicion = new transicion();
-        
-      //  transicion.Introducir_Terminales(terminales);
-       // transicion.printTerminales();
-        
-       // transicion.getTransition(raiz.first, table);
+        transicion transicion = new transicion();
+
+        transicion.getTransition(raiz.first, table);
         
        
-       tabla_transicion transi = new tabla_transicion(raiz, table, leaves);
-        System.out.println("\n ----------------TABLA TRANSICION------------------");
-        transi.impTable();
-        
-       // System.out.println("Sigue esto:");
-       // transi.impGraph();
        
        
         

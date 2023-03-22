@@ -26,21 +26,6 @@ public class OLC_proyecto1 {
         
         
     }
-    
-    
-    
-   /* public static void leer(String entrada){
-        try{
-            scanner scanner = new scanner(new java.io.StringReader(entrada));
-            parser sint = new parser(scanner);
-            sint.parse();
-            System.out.println("Se ha analizado correctamente");
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        
-    }*/
-    
-    
+
 
 }
