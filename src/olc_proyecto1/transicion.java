@@ -306,6 +306,4 @@ class repetido{
     }
     
     
-    
-    
 }

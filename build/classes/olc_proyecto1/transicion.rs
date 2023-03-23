@@ -1,0 +1,2 @@
+olc_proyecto1.repetido
+olc_proyecto1.transicion

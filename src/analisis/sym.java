@@ -8,38 +8,37 @@ package analisis;
 /** CUP generated class containing symbol constants. */
 public class sym {
   /* terminals */
-  public static final int INTERROGACION = 12;
+  public static final int INTERROGACION = 11;
   public static final int GUION = 2;
-  public static final int PORC = 5;
+  public static final int PORC = 4;
   public static final int CADENA = 25;
   public static final int CONJUNTO = 26;
-  public static final int ESPECIALES = 24;
-  public static final int GUION_BAJO = 3;
-  public static final int DECIMAL = 20;
-  public static final int NUM = 19;
-  public static final int COM_DOBLE = 14;
-  public static final int DOS_PUNTOS = 4;
-  public static final int COM_SIMPLE = 13;
-  public static final int EQUI = 9;
-  public static final int COMA = 18;
-  public static final int ASTERISCO = 17;
-  public static final int MAYOR = 15;
+  public static final int DECIMAL = 19;
+  public static final int NUM = 18;
+  public static final int COM_DOBLE = 13;
+  public static final int DOS_PUNTOS = 3;
+  public static final int COM_SIMPLE = 12;
+  public static final int EQUI = 8;
+  public static final int CARACTER = 24;
+  public static final int COMA = 17;
+  public static final int MAYOR = 14;
   public static final int EOF = 0;
+  public static final int ASTERISCO = 16;
   public static final int CHAR_MIN = 22;
   public static final int CHAR_MAY = 21;
-  public static final int DIS = 10;
+  public static final int DIS = 9;
   public static final int error = 1;
   public static final int IDENTIFICADOR = 23;
-  public static final int COR_IZQ = 6;
-  public static final int PUNTOCOMA = 8;
-  public static final int CONC = 16;
-  public static final int COR_DER = 7;
-  public static final int MAS = 11;
+  public static final int COR_IZQ = 5;
+  public static final int PUNTOCOMA = 7;
+  public static final int CONC = 15;
+  public static final int ASCII = 20;
+  public static final int COR_DER = 6;
+  public static final int MAS = 10;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
   "GUION",
-  "GUION_BAJO",
   "DOS_PUNTOS",
   "PORC",
   "COR_IZQ",
@@ -57,10 +56,11 @@ public class sym {
   "COMA",
   "NUM",
   "DECIMAL",
+  "ASCII",
   "CHAR_MAY",
   "CHAR_MIN",
   "IDENTIFICADOR",
-  "ESPECIALES",
+  "CARACTER",
   "CADENA",
   "CONJUNTO"
   };

@@ -1,25 +1,38 @@
 package analisis;
 import java_cup.runtime.*;
+import java.util.ArrayList;
 
 parser code
 {://codigo visible
 
+    ArrayList <Conjunto> CONJUNTOS = new ArrayList<Conjunto>();
+
     public void syntax_error(Symbol s){
         System.out.println("Error R de sintaxis: "+s.value +" Linea "+ (s.left+1)+ " Columna "+ (s.right+1));
     }
-     public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception{ 
+    public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception{ 
         System.out.println("Error NR de sintaxis: "+ s.value +" Linea "+(s.left+1)+" columna "+(s.right+1) );
     }
+    public void getConjuntos(){
+        for (Conjunto conjunto : CONJUNTOS) {
+        System.out.println("Conjunto " + conjunto.Identificador + ": " + conjunto.notacion);
+        }
+    }
+
+    String concoma;
+    
+
 :}
 
 //terminales
-terminal String GUION,GUION_BAJO,DOS_PUNTOS, PORC, COR_IZQ, COR_DER, PUNTOCOMA, EQUI, DIS, MAS, INTERROGACION, COM_SIMPLE, COM_DOBLE, MAYOR, CONC, ASTERISCO, COMA;
+terminal String GUION,DOS_PUNTOS, PORC, COR_IZQ, COR_DER, PUNTOCOMA, EQUI, DIS, MAS, INTERROGACION, COM_SIMPLE, COM_DOBLE, MAYOR, CONC, ASTERISCO, COMA;
 terminal String NUM;
 terminal String DECIMAL;
+terminal String ASCII;
 terminal String CHAR_MAY;
 terminal String CHAR_MIN;
 terminal String IDENTIFICADOR;
-terminal String ESPECIALES;
+terminal String CARACTER;
 terminal String CADENA;
 terminal String CONJUNTO;
 //terminal String ASCII;
@@ -42,33 +55,40 @@ non terminal comprobacion;
 
 
 
-
+//Conjunto con = new Conjunto(a,b); CONJUNTOS.add(con);
 
 // 
 start with ini; 
 
 ini::= COR_IZQ first PORC PORC PORC PORC last COR_DER;
 
-first ::= first instruccion|
+first ::= first:a instruccion
+            {:
+            System.out.println("la primera parte es "+a);
+            :}|
           instruccion;
 
-instruccion::= CONJUNTO DOS_PUNTOS IDENTIFICADOR GUION MAYOR notation PUNTOCOMA|
+instruccion::= CONJUNTO DOS_PUNTOS IDENTIFICADOR:a GUION MAYOR notation:b PUNTOCOMA {:System.out.println("El identificador es: "+a+" Con la notacion: "+b);
+                //Conjunto conjunto = new Conjunto(a, b);
+                //CONJUNTOS.add(conjunto)
+                ;:}|   
                IDENTIFICADOR GUION MAYOR expresion PUNTOCOMA;
 
-notation::= CHAR_MAY EQUI CHAR_MAY|
-            CHAR_MIN EQUI CHAR_MIN|
-            NUM EQUI NUM|
-            con_coma;
-            //faltan los acsii
+notation::= CHAR_MAY:a EQUI CHAR_MAY:b {:System.out.println("El conjunto "+a+"-"+b);:}|
+            CHAR_MIN:a EQUI CHAR_MIN:b {:System.out.println("El conjunto "+a+"-"+b);:}|
+            NUM:a EQUI NUM:b {:System.out.println("El conjunto "+a+"-"+b);:}|
+            ASCII:a EQUI ASCII:b {:System.out.println("El conjunto "+a+"-"+b);:}|
+            con_coma:a {:System.out.println("El concoma es :"+concoma);:};
 
-con_coma::= con_coma COMA normal|
+con_coma::= con_coma:a COMA normal:b {:concoma += b;:}|
             normal;
 
 
-normal::= CHAR_MAY|
-          CHAR_MIN|
-          NUM;
-          //faltan los acsii
+normal::= CHAR_MAY:a {:System.out.println("ahora es: "+concoma); concoma = a;:}|
+          CHAR_MIN:a {:System.out.println("ahora es: "+concoma); concoma = a;:}|
+          GUION:a {:System.out.println("ahora es: "+concoma); concoma = a;:}|
+          ASCII:a {:System.out.println("ahora es: "+concoma); concoma = a;:}|
+          NUM:a {:System.out.println("ahora es: "+concoma); concoma = a;:};
 
 
 expresion::= CONC expresion expresion|
@@ -77,7 +97,7 @@ expresion::= CONC expresion expresion|
              MAS expresion|
              INTERROGACION expresion|
              COR_IZQ IDENTIFICADOR COR_DER|
-             ESPECIALES;
+             CARACTER;
 
 
 
@@ -88,10 +108,3 @@ last::= last comprobacion|
 comprobacion::= IDENTIFICADOR DOS_PUNTOS CADENA PUNTOCOMA;
 
 
-
-/*
-ini::= ini expresion
-    | expresion;
-
-expresion::= GUION|GUION_BAJO|MAYOR|DOS_PUNTOS|PORC|COR_IZQ|COR_DER|PUNTOCOMA|EQUI|CONC|DIS|ASTERISCO|MAS|INTERROGACION|COM_SIMPLE|COM_DOBLE|NUM|DECIMAL|COMENT_ONELINE|COMENT_MORLINE|IDENTIFICADOR|CONJUNTO;
-*/

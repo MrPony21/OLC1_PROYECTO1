@@ -23,7 +23,16 @@ public class OLC_proyecto1 {
         frame fram = new frame();
         fram.setVisible(true);
        
-        
+        /*
+        try{
+            scanner scanner = new scanner(new java.io.StringReader(texto));
+            parser sint = new parser(scanner);
+            sint.parse();
+            System.out.println("Se ha analizado correctamente");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        */
         
     }
 

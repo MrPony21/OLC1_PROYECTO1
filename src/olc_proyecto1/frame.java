@@ -242,16 +242,50 @@ public class frame extends javax.swing.JFrame {
 
 
     private void analizar(String texto){
-        /*
+        
+        
+        String text = "<!\n" +
+                        "     4R(H1V0 D3 PRU3B4 M3D10\n" +
+                        "\n" +
+                        "\n" +
+                        "!>\n" +
+                        "{\n" +
+                        "\n" +
+                        "//                       ----DEFINIENDO CONJUNTOS----\n" +
+                        "CONJ: mayus - > A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z;\n" +
+                        "CONJ: minus -     > a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z;\n" +
+                        "CONJ: letra -  > a~z;\n" +
+                        "CONJ: digito -  > 0~9; \n" +
+                        "\n" +
+                        "//                       ----DEFINIENDO EXPRESIONES----\n" +
+                        "frase -> .\"C\".\"O\".\"M\".\"P\".\"I\".\"1\" ? + | | {letra} {digito} \" \";\n" +
+                        "cadena  -   > . \\' . + | | | | \\n {minus} {mayus} {digito} \" \" \\';\n" +
+                        "%%\n" +
+                        "%%\n" +
+                        "cadena : \"\\'cadena entre comilla simple\\'\"; //bueno\n" +
+                        "frase : \"COMPI1 sale con 100\"; // bueno\n" +
+                        "}\n" +
+                        "\n" +
+                        "<!\n" +
+                        "     12·$333544·%&//\n" +
+                        "          ·····NO TE DESANIMES ESTO SALE CON 100\n" +
+                        "     12·$333544·%&//\n" +
+                        "!>";
+        
         try{
-            scanner scanner = new scanner(new java.io.StringReader(texto));
+            scanner scanner = new scanner(new java.io.StringReader(text));
             parser sint = new parser(scanner);
             sint.parse();
             System.out.println("Se ha analizado correctamente");
+            sint.getConjuntos();
         } catch (Exception e){
             e.printStackTrace();
-        }*/
+        }
         
+        
+        
+        
+        /*
         
         //Aqui llamaremos para crear el arbol
         
@@ -302,7 +336,7 @@ public class frame extends javax.swing.JFrame {
         transicion.getTransition(raiz.first, table);
         
        
-       
+       */
        
         
         
