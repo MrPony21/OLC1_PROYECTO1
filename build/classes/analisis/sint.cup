@@ -14,10 +14,7 @@ parser code
         System.out.println("Error NR de sintaxis: "+ s.value +" Linea "+(s.left+1)+" columna "+(s.right+1) );
     }
     
-    public getTrees () {
-        trees.
     
-    }
     
 
 :}
@@ -64,7 +61,7 @@ first ::= first:a instruccion|
           instruccion;
 
 instruccion::= CONJUNTO DOS_PUNTOS IDENTIFICADOR:a GUION MAYOR notation:b PUNTOCOMA|   
-               IDENTIFICADOR GUION MAYOR expresion:a PUNTOCOMA{:trees.add(new Tree((NodoBin) a));:};
+               IDENTIFICADOR:b GUION MAYOR expresion:a PUNTOCOMA{:trees.add(new Tree((NodoBin) a,b));:};
 
 notation::= CHAR_MAY EQUI CHAR_MAY|
             CHAR_MIN EQUI CHAR_MIN|

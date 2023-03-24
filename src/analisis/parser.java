@@ -181,6 +181,8 @@ public class parser extends java_cup.runtime.lr_parser {
         System.out.println("Error NR de sintaxis: "+ s.value +" Linea "+(s.left+1)+" columna "+(s.right+1) );
     }
     
+    
+    
 
 
 
@@ -271,10 +273,13 @@ class CUP$parser$actions {
           case 5: // instruccion ::= IDENTIFICADOR GUION MAYOR expresion PUNTOCOMA 
             {
               Object RESULT =null;
+		int bleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).right;
+		String b = (String)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-4)).value;
 		int aleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
 		Object a = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
-		trees.add(new Tree((NodoBin) a));
+		trees.add(new Tree((NodoBin) a,b));
               CUP$parser$result = parser.getSymbolFactory().newSymbol("instruccion",2, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -500,6 +505,7 @@ class CUP$parser$actions {
 		
                 NodoBin leave = new NodoBin(a);
                 leave.setLeave(true);
+                leave.setAnulable(false);
                 RESULT = leave;
              
               CUP$parser$result = parser.getSymbolFactory().newSymbol("expresion",3, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
@@ -516,6 +522,7 @@ class CUP$parser$actions {
 		
                 NodoBin leave = new NodoBin(a);
                 leave.setLeave(true);
+                leave.setAnulable(false);
                 RESULT = leave;
              
               CUP$parser$result = parser.getSymbolFactory().newSymbol("expresion",3, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);

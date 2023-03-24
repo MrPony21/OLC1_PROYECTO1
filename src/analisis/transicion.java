@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package olc_proyecto1;
+package analisis;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -17,7 +17,7 @@ public class transicion {
         ArrayList <trans> transiciones = new ArrayList <trans>();
         ArrayList <repetido> repetidos = new ArrayList<repetido>();
 
-        public void getTransition(ArrayList <Integer> first ,ArrayList<ArrayList> table){
+        public ArrayList <trans> getTransition(ArrayList <Integer> first ,ArrayList<ArrayList> table){
         
             //primero se crea las transiciones del estado 0
 
@@ -99,6 +99,7 @@ public class transicion {
         */
         
         imprimir();
+        return transiciones;
     }
         
         
@@ -120,8 +121,10 @@ public class transicion {
                     
                  
                     if (repetidos != null){  
-                        for(repetido repe: repetidos){      
-                            if (repe.Siguientes == sg){
+                        for(repetido repe: repetidos){     
+                            System.out.println("Cuanto entro aqui se compara: "+repe.Siguientes+" con "+sg);
+                            if (repe.Siguientes.equals(sg)){
+                                System.out.println("entre");
                                 nueva_trans.setFinal(repe.Final_state);
                                 break;
           
@@ -153,11 +156,16 @@ public class transicion {
         
         for (int i = 0; i < table.size(); i++) {
             
+            if (table.get(i).get(1) == "#"){
+                break;
+            }          
+            
             if(!Elementosrep.contains(table.get(i).get(2))){
                 Elementosrep.add(table.get(i).get(2));
                 nueva_tabla.add(table.get(i));
                 
             }
+            
                
         }
         
@@ -166,6 +174,8 @@ public class transicion {
             
             ArrayList<Integer> tab =(ArrayList<Integer>) nueva_tabla.get(i).get(2);   
             
+            
+           
             
             String state = "S"+Integer.toString(estado);
             repetido rep = new repetido(tab,state);
@@ -289,8 +299,28 @@ public class transicion {
     }
     
    
+ 
+    public ArrayList<String> getEstados(){
+        
+        ArrayList <String> estados = new ArrayList<String>();
+        
+        estados.add("S0");
+        
+        for (repetido rep: repetidos) {
+            
+            estados.add(rep.Final_state);
+            //System.out.println(rep.Final_state);
+            
+        }
+        
+        return estados;
+                
+        
+    }
     
 }
+
+
 
 
 class repetido{

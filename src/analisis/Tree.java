@@ -4,6 +4,10 @@
  */
 package analisis;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /**
@@ -15,8 +19,10 @@ public class Tree {
     private NodoBin arbol;
     private int numeroNodo = 1;
     private ArrayList <Siguientes> lista_siguientes = new ArrayList<>(); 
+    private String nombre = "";
 
-    public Tree(NodoBin arbol) {
+    public Tree(NodoBin arbol, String nombre) {
+        this.nombre = nombre;
         NodoBin raiz = new NodoBin(".");
         NodoBin estado_aceptacion = new NodoBin("#");
         estado_aceptacion.setLeave(true);
@@ -27,8 +33,11 @@ public class Tree {
         numeroNodo =0;
         calculos(this.arbol);
         //System.out.println(graficar(this.arbol,numeroNodo));
-        printSiguientes();
+        String arbgraph = graficar(this.arbol, numeroNodo);
+        //printSiguientes();
         generarTransiciones();
+        dotTree("SALIDAS/ARBOLES_202003220/ARB_", arbgraph);
+        dotSig("SALIDAS/SIGUIENTES_202003220/SIG_");
     }
     
 
@@ -262,6 +271,7 @@ public class Tree {
         
         for (int i = 0; i < lista_siguientes.size(); i++) {
             
+            
             ArrayList <Object> nuevo2 = new ArrayList();
             nuevo2.add(lista_siguientes.get(i).getNumeracion());
             nuevo2.add(lista_siguientes.get(i).getLexema());
@@ -281,17 +291,249 @@ public class Tree {
             System.out.println(item.get(0)+" - "+item.get(1)+ " - "+item.get(2));
         }
         
-        
-        tabla_transiciones transic = new tabla_transiciones();
-        tansic.crear_estados(nuevo);
+        System.out.println(nuevo);
         
         
         
+        
+        
+        transicion transic = new transicion();
+        transic.crear_estados(nuevo);
+        transic.PrintEstados();
+        
+        ArrayList <Integer> first = this.arbol.getPrimeros();
+        System.out.println(first);
+        ArrayList <trans> transiciones = transic.getTransition(first, nuevo);
+        ArrayList<String> estados = transic.getEstados();
+        
+        
+        dotTrans(transiciones,estados, "SALIDAS/TRANSICIONES_202003220/TRANS_");
+        
+        
+        
+    }
+    
+    
+    
+    
+    public void dotTree(String tmpPath, String graph){
+        
+        String graphica = "digraph s {\n";
+        graphica += graph;
+        graphica += "\n}";
+        
+       // System.out.println(graphica);
+                
+         try {
+            try (FileWriter fw = new FileWriter(tmpPath + this.nombre + ".dot", true); BufferedWriter bw = new BufferedWriter(fw); PrintWriter out = new PrintWriter(bw)) {
+                out.println(graphica);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Runtime rt = Runtime.getRuntime();
+            rt.exec("dot -Tpng " + tmpPath + this.nombre + ".dot -o " + tmpPath + this.nombre + ".png");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+             
+         }
+    }
+    
+    
+    public void dotSig(String tmpPath){
+        
+        String graph = "";
+        
+        graph += "a0 [shape=none label=<\n" 
+                +"<TABLE border=\"1\" cellspacing=\"2\" cellpadding=\"10\" >\n"
+                + "<TR>"
+                + "<TD colspan=\"3\"> TABLA DE SIGUIENTES </TD>"
+                + "</TR>\n"
+                + "<TR>"
+                + "<TD colspan=\"2\"> HOJAS </TD>"
+                + "<TD colspan=\"2\"> SIGUIENTES </TD>"
+                + "</TR>";
+        
+        
+        
+        for (Siguientes sg: lista_siguientes){
+            
+            graph += " <TR>\n"
+                    + " <TD> "+ sg.getNumeracion()+ "</TD>\n"
+                    + " <TD border=\"1\" bgcolor=\"#bebebe\" > "+ sg.getLexema() + "</TD>\n"
+                    + " <TD> "+ sg.getSig() + "</TD>\n"
+                    + " </TR>\n";
+                   
+        }
+        
+        graph += " </TABLE>>];";
+        
+        
+        String graphica = "digraph s {\n";
+        graphica += graph;
+        graphica += "\n}";
+        
+        //System.out.println(graphica);
+                
+         try {
+            try (FileWriter fw = new FileWriter(tmpPath + this.nombre + ".dot", true); BufferedWriter bw = new BufferedWriter(fw); PrintWriter out = new PrintWriter(bw)) {
+                out.println(graphica);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Runtime rt = Runtime.getRuntime();
+            rt.exec("dot -Tpng " + tmpPath + this.nombre + ".dot -o " + tmpPath + this.nombre + ".png");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+             
+         }
+                
+               
+        
+        
+        
+    }
+    
+    
+    public void dotTrans(ArrayList<trans> transiciones ,ArrayList<String> estados,String tmpPath){
+        
+        String graph = "";
+        int nodos = 1;
+        
+        for (Siguientes sig: lista_siguientes){
+            
+            nodos += 1;
+            
+        }
+        
+        System.out.println(nodos);
+        ArrayList<String> lex = new ArrayList<>();
+        
+        graph += "a0 [shape=none label=<\n" 
+                +"<TABLE border=\"1\" cellspacing=\"2\" cellpadding=\"10\" >\n"
+                + "<TR>"
+                + "<TD colspan=\"9\"> TABLA DE TRANSICIONES </TD>"
+                + "</TR>\n"
+                + "<TR>"
+                + "<TD > ESTADOS </TD>\n"
+                + "<TD > SIGUIENTES </TD>\n";
+                
+        
+        for (Siguientes sig: lista_siguientes){
+            
+            System.out.println(sig.getLexema());
+            graph += "<TD>" +sig.getLexema() + "</TD>\n";
+            lex.add(sig.getLexema());
+ 
+            
+        }
+        
+        graph += "</TR>";
+        //System.out.println(transiciones.);
+        
+        for (String t: estados){
+            
+            graph += "<TR>\n";
+            
+            graph += "<TD>"+t+"</TD>\n";
+            
+            
+         
+                for (trans tran: transiciones){
+                    
+                    for (Siguientes sig: lista_siguientes){
+                        
+                        if (tran.terminal == sig.getLexema()){
+                            System.out.println(sig.getLexema());
+                            graph += "<TD> x </TD>\n";
+                            lex.add(sig.getLexema());
+                        }else{
+                            System.out.println(sig.getLexema());
+                            graph += "<TD> - </TD>\n";
+                            lex.add(sig.getLexema());
+                        }
+                        
+                       
+ 
+            
+        }
+                    
+                }
+                
+            
+            
+            
+            graph += "</TR>\n";
+            
+        }
+        /*
+        for (trans t: transiciones){
+            
+            graph += "<TR>\n";
+            
+            
+            
+            
+            graph += "<TD>"+t.Inicial +"</TD>\n"
+                    + "<TD>"+t.Siguientes+"</TD>\n";
+           
+            for (Integer  list:t.Siguientes){
+                
+                
+                
+                graph += "<TD>"+list+"</TD>\n";
+                
+            }
+            
+            graph += "</TR>\n";
+                    
+            
+ 
+            
+        }
+        
+        */
+        
+        graph += " </TABLE>>];";
+        
+        //System.out.println(graph);
+        
+        String graphica = "digraph s {\n";
+        graphica += graph;
+        graphica += "\n}";
+        
+        System.out.println(graphica);
+                
+         try {
+            try (FileWriter fw = new FileWriter(tmpPath + this.nombre + ".dot", true); BufferedWriter bw = new BufferedWriter(fw); PrintWriter out = new PrintWriter(bw)) {
+                out.println(graphica);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Runtime rt = Runtime.getRuntime();
+            rt.exec("dot -Tpng " + tmpPath + this.nombre + ".dot -o " + tmpPath + this.nombre + ".png");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+             
+        }
+                
+               
         
         
         
         
     }
+         
+         
+ 
     
       
 

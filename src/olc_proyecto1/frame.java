@@ -273,7 +273,7 @@ public class frame extends javax.swing.JFrame {
                         "!>";
         
         try{
-            scanner scanner = new scanner(new java.io.StringReader(text));
+            scanner scanner = new scanner(new java.io.StringReader(texto));
             parser sint = new parser(scanner);
             sint.parse();
             System.out.println("Se ha analizado correctamente");
@@ -282,61 +282,7 @@ public class frame extends javax.swing.JFrame {
         }
         
         
-        
-        
-        
-        
-        //Aqui llamaremos para crear el arbol
-        
-       // String exp = ". {abecedarioMinus} * | \"_\" | {abecedarioMinus} {digito};";
-       // String exp = "...ab*b*|ba";
-       // String exp = ".a*|b|ac";
-        String exp = ".a.+||||bcdefa"; //MEDIO
-       //String exp = ".a.b.b.c.?d.e.f.f.+g.h+g"; //ABVANZADO
-       //String exp = ".|ab.+|||cabd.e.+|ab.f.g.hi";
-                    
-        
     
-         
-       
-        
-        
-        ArrayList<nodo> leaves = new ArrayList();
-        ArrayList<ArrayList> table = new ArrayList();
-        
-        
-        exp = "."+ exp +"#";
-        
-        tree arbol = new tree(exp, leaves, table);
-        nodo raiz = arbol.getRoot();
-        
-        raiz.getNodo();
-        raiz.siguientes();
-        
-        System.out.println("TABLA DE SIGUIENTES: \n");
-        
-        table tabla = new table();
-        tabla.PrintTable(table);
-        
-        System.out.println("Se ha generado la tabla de siguientes");
-        
-        System.out.println("TABLA ORDENADA DE SIGUIENTES: \n");
-        
-        tabla.OrdenamientoBurbuja(table);
-        tabla.PrintTable(table);
-        
-        System.out.println(raiz.first);
-        
-        
-        transicion transicion = new transicion();
-        transicion.crear_estados(table);
-        transicion.PrintEstados();
-
-        transicion.getTransition(raiz.first, table);
-        
-       
-       
-       
         
         
     }

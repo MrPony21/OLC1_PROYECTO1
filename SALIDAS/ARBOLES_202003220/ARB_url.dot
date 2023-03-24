@@ -1,0 +1,324 @@
+digraph s {
+N_1[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [1]</TD>
+ <TD border="1" bgcolor="#F9902D"> .</TD>
+ <TD> [12]</TD>
+ </TR>
+ </TABLE>>];N_2[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [1]</TD>
+ <TD border="1" bgcolor="#F9902D"> .</TD>
+ <TD> [5, 11]</TD>
+ </TR>
+ </TABLE>>];N_1-> N_2;
+N_3[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [1]</TD>
+ <TD border="1" bgcolor="#bebebe" > "h"</TD>
+ <TD> [1]</TD>
+ </TR>
+ <TR>
+ <TD colspan="3">1</TD>
+ </TR>
+ </TABLE>>];N_2-> N_3;
+N_4[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [2]</TD>
+ <TD border="1" bgcolor="#F9902D"> .</TD>
+ <TD> [5, 11]</TD>
+ </TR>
+ </TABLE>>];N_2-> N_4;
+N_5[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [2]</TD>
+ <TD border="1" bgcolor="#bebebe" > "t"</TD>
+ <TD> [2]</TD>
+ </TR>
+ <TR>
+ <TD colspan="3">2</TD>
+ </TR>
+ </TABLE>>];N_4-> N_5;
+N_6[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [3]</TD>
+ <TD border="1" bgcolor="#F9902D"> .</TD>
+ <TD> [5, 11]</TD>
+ </TR>
+ </TABLE>>];N_4-> N_6;
+N_7[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [3]</TD>
+ <TD border="1" bgcolor="#bebebe" > "t"</TD>
+ <TD> [3]</TD>
+ </TR>
+ <TR>
+ <TD colspan="3">3</TD>
+ </TR>
+ </TABLE>>];N_6-> N_7;
+N_8[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [4]</TD>
+ <TD border="1" bgcolor="#F9902D"> .</TD>
+ <TD> [5, 11]</TD>
+ </TR>
+ </TABLE>>];N_6-> N_8;
+N_9[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [4]</TD>
+ <TD border="1" bgcolor="#bebebe" > "p"</TD>
+ <TD> [4]</TD>
+ </TR>
+ <TR>
+ <TD colspan="3">4</TD>
+ </TR>
+ </TABLE>>];N_8-> N_9;
+N_10[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [5, 6]</TD>
+ <TD border="1" bgcolor="#F9902D"> .</TD>
+ <TD> [5, 11]</TD>
+ </TR>
+ </TABLE>>];N_8-> N_10;
+N_11[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [5]</TD>
+ <TD border="1" bgcolor="#F9902D"> ?</TD>
+ <TD> [5]</TD>
+ </TR>
+ </TABLE>>];N_10-> N_11;
+N_12[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [5]</TD>
+ <TD border="1" bgcolor="#bebebe" > "s"</TD>
+ <TD> [5]</TD>
+ </TR>
+ <TR>
+ <TD colspan="3">5</TD>
+ </TR>
+ </TABLE>>];N_11-> N_12;
+N_13[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [6]</TD>
+ <TD border="1" bgcolor="#F9902D"> .</TD>
+ <TD> [11]</TD>
+ </TR>
+ </TABLE>>];N_10-> N_13;
+N_14[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [6]</TD>
+ <TD border="1" bgcolor="#bebebe" > ":"</TD>
+ <TD> [6]</TD>
+ </TR>
+ <TR>
+ <TD colspan="3">6</TD>
+ </TR>
+ </TABLE>>];N_13-> N_14;
+N_15[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [7]</TD>
+ <TD border="1" bgcolor="#F9902D"> .</TD>
+ <TD> [11]</TD>
+ </TR>
+ </TABLE>>];N_13-> N_15;
+N_16[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [7]</TD>
+ <TD border="1" bgcolor="#bebebe" > "/"</TD>
+ <TD> [7]</TD>
+ </TR>
+ <TR>
+ <TD colspan="3">7</TD>
+ </TR>
+ </TABLE>>];N_15-> N_16;
+N_17[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [8]</TD>
+ <TD border="1" bgcolor="#F9902D"> .</TD>
+ <TD> [11]</TD>
+ </TR>
+ </TABLE>>];N_15-> N_17;
+N_18[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [8]</TD>
+ <TD border="1" bgcolor="#bebebe" > "/"</TD>
+ <TD> [8]</TD>
+ </TR>
+ <TR>
+ <TD colspan="3">8</TD>
+ </TR>
+ </TABLE>>];N_17-> N_18;
+N_19[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [9]</TD>
+ <TD border="1" bgcolor="#F9902D"> .</TD>
+ <TD> [11]</TD>
+ </TR>
+ </TABLE>>];N_17-> N_19;
+N_20[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [9]</TD>
+ <TD border="1" bgcolor="#F9902D"> +</TD>
+ <TD> [9]</TD>
+ </TR>
+ </TABLE>>];N_19-> N_20;
+N_21[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [9]</TD>
+ <TD border="1" bgcolor="#bebebe" > minuscula</TD>
+ <TD> [9]</TD>
+ </TR>
+ <TR>
+ <TD colspan="3">9</TD>
+ </TR>
+ </TABLE>>];N_20-> N_21;
+N_22[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [10]</TD>
+ <TD border="1" bgcolor="#F9902D"> .</TD>
+ <TD> [11]</TD>
+ </TR>
+ </TABLE>>];N_19-> N_22;
+N_23[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [10]</TD>
+ <TD border="1" bgcolor="#bebebe" > "."</TD>
+ <TD> [10]</TD>
+ </TR>
+ <TR>
+ <TD colspan="3">10</TD>
+ </TR>
+ </TABLE>>];N_22-> N_23;
+N_24[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [11]</TD>
+ <TD border="1" bgcolor="#F9902D"> +</TD>
+ <TD> [11]</TD>
+ </TR>
+ </TABLE>>];N_22-> N_24;
+N_25[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [11]</TD>
+ <TD border="1" bgcolor="#bebebe" > minuscula</TD>
+ <TD> [11]</TD>
+ </TR>
+ <TR>
+ <TD colspan="3">11</TD>
+ </TR>
+ </TABLE>>];N_24-> N_25;
+N_26[shape = none label=<
+ <TABLE border="0" cellspacing="2" cellpadding="10" >
+ <TR>
+ <TD colspan="3">No Anulable</TD>
+ </TR>
+ <TR>
+ <TD> [12]</TD>
+ <TD border="1" bgcolor="#bebebe" > #</TD>
+ <TD> [12]</TD>
+ </TR>
+ <TR>
+ <TD colspan="3">12</TD>
+ </TR>
+ </TABLE>>];N_1-> N_26;
+
+}

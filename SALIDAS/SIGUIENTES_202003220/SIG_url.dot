@@ -1,0 +1,66 @@
+digraph s {
+a0 [shape=none label=<
+<TABLE border="1" cellspacing="2" cellpadding="10" >
+<TR><TD colspan="3"> TABLA DE SIGUIENTES </TD></TR>
+<TR><TD colspan="2"> HOJAS </TD><TD colspan="2"> SIGUIENTES </TD></TR> <TR>
+ <TD> 1</TD>
+ <TD border="1" bgcolor="#bebebe" > "h"</TD>
+ <TD> [2]</TD>
+ </TR>
+ <TR>
+ <TD> 2</TD>
+ <TD border="1" bgcolor="#bebebe" > "t"</TD>
+ <TD> [3]</TD>
+ </TR>
+ <TR>
+ <TD> 3</TD>
+ <TD border="1" bgcolor="#bebebe" > "t"</TD>
+ <TD> [4]</TD>
+ </TR>
+ <TR>
+ <TD> 4</TD>
+ <TD border="1" bgcolor="#bebebe" > "p"</TD>
+ <TD> [5, 6]</TD>
+ </TR>
+ <TR>
+ <TD> 5</TD>
+ <TD border="1" bgcolor="#bebebe" > "s"</TD>
+ <TD> [6, 12]</TD>
+ </TR>
+ <TR>
+ <TD> 6</TD>
+ <TD border="1" bgcolor="#bebebe" > ":"</TD>
+ <TD> [7]</TD>
+ </TR>
+ <TR>
+ <TD> 7</TD>
+ <TD border="1" bgcolor="#bebebe" > "/"</TD>
+ <TD> [8]</TD>
+ </TR>
+ <TR>
+ <TD> 8</TD>
+ <TD border="1" bgcolor="#bebebe" > "/"</TD>
+ <TD> [9]</TD>
+ </TR>
+ <TR>
+ <TD> 9</TD>
+ <TD border="1" bgcolor="#bebebe" > minuscula</TD>
+ <TD> [9, 10]</TD>
+ </TR>
+ <TR>
+ <TD> 10</TD>
+ <TD border="1" bgcolor="#bebebe" > "."</TD>
+ <TD> [11]</TD>
+ </TR>
+ <TR>
+ <TD> 11</TD>
+ <TD border="1" bgcolor="#bebebe" > minuscula</TD>
+ <TD> [11, 12]</TD>
+ </TR>
+ <TR>
+ <TD> 12</TD>
+ <TD border="1" bgcolor="#bebebe" > #</TD>
+ <TD> []</TD>
+ </TR>
+ </TABLE>>];
+}
