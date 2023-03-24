@@ -64,59 +64,59 @@ ASCII = [!-\/:-@\[-`{-}]
 
 %%
 
-<YYINITIAL> {CONJUNTO} { System.out.println(yytext());  return new Symbol(sym.CONJUNTO, yyline, yycolumn, yytext()); }
+<YYINITIAL> {CONJUNTO} {   return new Symbol(sym.CONJUNTO, yyline, yycolumn, yytext()); }
 
-<YYINITIAL> {COMENT_ONELINE} { System.out.println(yytext());  }
+<YYINITIAL> {COMENT_ONELINE} {   }
 
-<YYINITIAL> {COMENT_MORLINE} { System.out.println(yytext());  }
+<YYINITIAL> {COMENT_MORLINE} {   }
 
-<YYINITIAL> {COR_IZQ} { System.out.println(yytext()); return new Symbol(sym.COR_IZQ, yyline, yycolumn, yytext()); }
+<YYINITIAL> {COR_IZQ} {  return new Symbol(sym.COR_IZQ, yyline, yycolumn, yytext()); }
 
-<YYINITIAL> {COR_DER} { System.out.println(yytext()); return new Symbol(sym.COR_DER, yyline, yycolumn, yytext()); }
+<YYINITIAL> {COR_DER} {  return new Symbol(sym.COR_DER, yyline, yycolumn, yytext()); }
 
-<YYINITIAL> {GUION} { System.out.println(yytext()); return new Symbol(sym.GUION, yyline, yycolumn, yytext()); }
+<YYINITIAL> {GUION} {  return new Symbol(sym.GUION, yyline, yycolumn, yytext()); }
 
-<YYINITIAL> {MAYOR} { System.out.println(yytext()); return new Symbol(sym.MAYOR, yyline, yycolumn, yytext()); }
+<YYINITIAL> {MAYOR} {  return new Symbol(sym.MAYOR, yyline, yycolumn, yytext()); }
 
-<YYINITIAL> {COMA} { System.out.println(yytext()); return new Symbol(sym.COMA, yyline, yycolumn, yytext()); }
+<YYINITIAL> {COMA} {  return new Symbol(sym.COMA, yyline, yycolumn, yytext()); }
 
-<YYINITIAL> {CONC} { System.out.println(yytext()); return new Symbol(sym.CONC, yyline, yycolumn, yytext()); }
+<YYINITIAL> {CONC} {  return new Symbol(sym.CONC, yyline, yycolumn, yytext()); }
 
-<YYINITIAL> {DOS_PUNTOS} { System.out.println(yytext()); return new Symbol(sym.DOS_PUNTOS, yyline, yycolumn, yytext()); }
+<YYINITIAL> {DOS_PUNTOS} {  return new Symbol(sym.DOS_PUNTOS, yyline, yycolumn, yytext()); }
 
-<YYINITIAL> {PORC} {  System.out.println(yytext()); return new Symbol(sym.PORC, yyline, yycolumn, yytext()); }
+<YYINITIAL> {PORC} {   return new Symbol(sym.PORC, yyline, yycolumn, yytext()); }
 
-<YYINITIAL> {PUNTOCOMA} { System.out.println(yytext()); return new Symbol(sym.PUNTOCOMA, yyline, yycolumn, yytext()); }
+<YYINITIAL> {PUNTOCOMA} {  return new Symbol(sym.PUNTOCOMA, yyline, yycolumn, yytext()); }
 
-<YYINITIAL> {EQUI} { System.out.println(yytext()); return new Symbol(sym.EQUI, yyline, yycolumn, yytext()); }
+<YYINITIAL> {EQUI} {  return new Symbol(sym.EQUI, yyline, yycolumn, yytext()); }
 
-<YYINITIAL> {DIS} {  System.out.println(yytext()); return new Symbol(sym.DIS, yyline, yycolumn, yytext()); }
+<YYINITIAL> {DIS} {   return new Symbol(sym.DIS, yyline, yycolumn, yytext()); }
 
-<YYINITIAL> {MAS} { System.out.println(yytext()); return new Symbol(sym.MAS, yyline, yycolumn, yytext()); }
+<YYINITIAL> {MAS} {  return new Symbol(sym.MAS, yyline, yycolumn, yytext()); }
 
-<YYINITIAL> {ASTERISCO} { System.out.println(yytext()); return new Symbol(sym.ASTERISCO, yyline, yycolumn, yytext()); }
+<YYINITIAL> {ASTERISCO} {  return new Symbol(sym.ASTERISCO, yyline, yycolumn, yytext()); }
 
-<YYINITIAL> {INTERROGACION} {  System.out.println(yytext()); return new Symbol(sym.INTERROGACION, yyline, yycolumn, yytext()); }
+<YYINITIAL> {INTERROGACION} {   return new Symbol(sym.INTERROGACION, yyline, yycolumn, yytext()); }
 
-<YYINITIAL> {COM_SIMPLE} { System.out.println(yytext()); return new Symbol(sym.COM_SIMPLE, yyline, yycolumn, yytext()); }
+<YYINITIAL> {COM_SIMPLE} {  return new Symbol(sym.COM_SIMPLE, yyline, yycolumn, yytext()); }
 
 <YYINITIAL> {COM_DOBLE} {}
 
-<YYINITIAL> {NUM} { System.out.println(yytext()); return new Symbol(sym.NUM, yyline, yycolumn, yytext()); }
+<YYINITIAL> {NUM} {  return new Symbol(sym.NUM, yyline, yycolumn, yytext()); }
 
-<YYINITIAL> {DECIMAL} {  System.out.println(yytext()); return new Symbol(sym.DECIMAL, yyline, yycolumn, yytext()); }
+<YYINITIAL> {DECIMAL} {   return new Symbol(sym.DECIMAL, yyline, yycolumn, yytext()); }
 
-<YYINITIAL> {ASCII} {  System.out.println(yytext()); return new Symbol(sym.ASCII, yyline, yycolumn, yytext()); }
+<YYINITIAL> {ASCII} {   return new Symbol(sym.ASCII, yyline, yycolumn, yytext()); }
 
-<YYINITIAL> {CHAR_MAY} { System.out.println(yytext()); return new Symbol(sym.CHAR_MAY, yyline, yycolumn, yytext());}
+<YYINITIAL> {CHAR_MAY} {  return new Symbol(sym.CHAR_MAY, yyline, yycolumn, yytext());}
 
-<YYINITIAL> {CHAR_MIN} { System.out.println(yytext()); return new Symbol(sym.CHAR_MIN, yyline, yycolumn, yytext());}
+<YYINITIAL> {CHAR_MIN} {  return new Symbol(sym.CHAR_MIN, yyline, yycolumn, yytext());}
 
-<YYINITIAL> {IDENTIFICADOR} { System.out.println(yytext()); return new Symbol(sym.IDENTIFICADOR, yyline, yycolumn, yytext()); }
+<YYINITIAL> {IDENTIFICADOR} {  return new Symbol(sym.IDENTIFICADOR, yyline, yycolumn, yytext()); }
 
-<YYINITIAL> {CARACTER} { System.out.println(yytext()); return new Symbol(sym.CARACTER, yyline, yycolumn, yytext()); }
+<YYINITIAL> {CARACTER} {  return new Symbol(sym.CARACTER, yyline, yycolumn, yytext()); }
 
-<YYINITIAL> {CADENA} { System.out.println(yytext()); return new Symbol(sym.CADENA, yyline, yycolumn, yytext()); }
+<YYINITIAL> {CADENA} {  return new Symbol(sym.CADENA, yyline, yycolumn, yytext()); }
 
 <YYINITIAL> {ESPACIO} {}
 

@@ -273,11 +273,10 @@ public class frame extends javax.swing.JFrame {
                         "!>";
         
         try{
-            scanner scanner = new scanner(new java.io.StringReader(text));
+            scanner scanner = new scanner(new java.io.StringReader(texto));
             parser sint = new parser(scanner);
             sint.parse();
             System.out.println("Se ha analizado correctamente");
-            sint.getConjuntos();
         } catch (Exception e){
             e.printStackTrace();
         }

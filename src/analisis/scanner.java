@@ -55,8 +55,8 @@ public class scanner implements java_cup.runtime.Scanner {
     "\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7"+
     "\1\10\1\11\1\12\1\13\1\14\1\15\1\16\1\17"+
     "\1\20\1\21\2\22\1\23\1\24\1\25\1\15\4\23"+
-    "\3\0\2\26\1\27\1\0\1\30\2\0\1\31\1\27"+
-    "\1\26\1\32\1\0\1\31\1\33\1\30";
+    "\3\0\2\26\1\27\1\0\1\15\2\0\1\30\1\27"+
+    "\1\26\1\31\1\0\1\30\1\32\1\15";
 
   private static int [] zzUnpackAction() {
     int [] result = new int[46];
@@ -643,137 +643,132 @@ public class scanner implements java_cup.runtime.Scanner {
     System.out.println(err);
             } 
             // fall through
-          case 28: break;
+          case 27: break;
           case 2: 
-            { System.out.println(yytext()); return new Symbol(sym.GUION, yyline, yycolumn, yytext());
+            { return new Symbol(sym.GUION, yyline, yycolumn, yytext());
+            } 
+            // fall through
+          case 28: break;
+          case 3: 
+            { return new Symbol(sym.DOS_PUNTOS, yyline, yycolumn, yytext());
             } 
             // fall through
           case 29: break;
-          case 3: 
-            { System.out.println(yytext()); return new Symbol(sym.DOS_PUNTOS, yyline, yycolumn, yytext());
+          case 4: 
+            { return new Symbol(sym.PORC, yyline, yycolumn, yytext());
             } 
             // fall through
           case 30: break;
-          case 4: 
-            { System.out.println(yytext()); return new Symbol(sym.PORC, yyline, yycolumn, yytext());
+          case 5: 
+            { return new Symbol(sym.COR_IZQ, yyline, yycolumn, yytext());
             } 
             // fall through
           case 31: break;
-          case 5: 
-            { System.out.println(yytext()); return new Symbol(sym.COR_IZQ, yyline, yycolumn, yytext());
+          case 6: 
+            { return new Symbol(sym.COR_DER, yyline, yycolumn, yytext());
             } 
             // fall through
           case 32: break;
-          case 6: 
-            { System.out.println(yytext()); return new Symbol(sym.COR_DER, yyline, yycolumn, yytext());
+          case 7: 
+            { return new Symbol(sym.PUNTOCOMA, yyline, yycolumn, yytext());
             } 
             // fall through
           case 33: break;
-          case 7: 
-            { System.out.println(yytext()); return new Symbol(sym.PUNTOCOMA, yyline, yycolumn, yytext());
+          case 8: 
+            { return new Symbol(sym.EQUI, yyline, yycolumn, yytext());
             } 
             // fall through
           case 34: break;
-          case 8: 
-            { System.out.println(yytext()); return new Symbol(sym.EQUI, yyline, yycolumn, yytext());
+          case 9: 
+            { return new Symbol(sym.DIS, yyline, yycolumn, yytext());
             } 
             // fall through
           case 35: break;
-          case 9: 
-            { System.out.println(yytext()); return new Symbol(sym.DIS, yyline, yycolumn, yytext());
+          case 10: 
+            { return new Symbol(sym.MAS, yyline, yycolumn, yytext());
             } 
             // fall through
           case 36: break;
-          case 10: 
-            { System.out.println(yytext()); return new Symbol(sym.MAS, yyline, yycolumn, yytext());
+          case 11: 
+            { return new Symbol(sym.INTERROGACION, yyline, yycolumn, yytext());
             } 
             // fall through
           case 37: break;
-          case 11: 
-            { System.out.println(yytext()); return new Symbol(sym.INTERROGACION, yyline, yycolumn, yytext());
+          case 12: 
+            { return new Symbol(sym.COM_SIMPLE, yyline, yycolumn, yytext());
             } 
             // fall through
           case 38: break;
-          case 12: 
-            { System.out.println(yytext()); return new Symbol(sym.COM_SIMPLE, yyline, yycolumn, yytext());
-            } 
-            // fall through
-          case 39: break;
           case 13: 
             { 
             } 
             // fall through
-          case 40: break;
+          case 39: break;
           case 14: 
-            { System.out.println(yytext()); return new Symbol(sym.MAYOR, yyline, yycolumn, yytext());
+            { return new Symbol(sym.MAYOR, yyline, yycolumn, yytext());
+            } 
+            // fall through
+          case 40: break;
+          case 15: 
+            { return new Symbol(sym.CONC, yyline, yycolumn, yytext());
             } 
             // fall through
           case 41: break;
-          case 15: 
-            { System.out.println(yytext()); return new Symbol(sym.CONC, yyline, yycolumn, yytext());
+          case 16: 
+            { return new Symbol(sym.ASTERISCO, yyline, yycolumn, yytext());
             } 
             // fall through
           case 42: break;
-          case 16: 
-            { System.out.println(yytext()); return new Symbol(sym.ASTERISCO, yyline, yycolumn, yytext());
+          case 17: 
+            { return new Symbol(sym.COMA, yyline, yycolumn, yytext());
             } 
             // fall through
           case 43: break;
-          case 17: 
-            { System.out.println(yytext()); return new Symbol(sym.COMA, yyline, yycolumn, yytext());
+          case 18: 
+            { return new Symbol(sym.CHAR_MAY, yyline, yycolumn, yytext());
             } 
             // fall through
           case 44: break;
-          case 18: 
-            { System.out.println(yytext()); return new Symbol(sym.CHAR_MAY, yyline, yycolumn, yytext());
+          case 19: 
+            { return new Symbol(sym.ASCII, yyline, yycolumn, yytext());
             } 
             // fall through
           case 45: break;
-          case 19: 
-            { System.out.println(yytext()); return new Symbol(sym.ASCII, yyline, yycolumn, yytext());
+          case 20: 
+            { return new Symbol(sym.CHAR_MIN, yyline, yycolumn, yytext());
             } 
             // fall through
           case 46: break;
-          case 20: 
-            { System.out.println(yytext()); return new Symbol(sym.CHAR_MIN, yyline, yycolumn, yytext());
+          case 21: 
+            { return new Symbol(sym.NUM, yyline, yycolumn, yytext());
             } 
             // fall through
           case 47: break;
-          case 21: 
-            { System.out.println(yytext()); return new Symbol(sym.NUM, yyline, yycolumn, yytext());
+          case 22: 
+            { return new Symbol(sym.IDENTIFICADOR, yyline, yycolumn, yytext());
             } 
             // fall through
           case 48: break;
-          case 22: 
-            { System.out.println(yytext()); return new Symbol(sym.IDENTIFICADOR, yyline, yycolumn, yytext());
+          case 23: 
+            { return new Symbol(sym.CARACTER, yyline, yycolumn, yytext());
             } 
             // fall through
           case 49: break;
-          case 23: 
-            { System.out.println(yytext()); return new Symbol(sym.CARACTER, yyline, yycolumn, yytext());
+          case 24: 
+            { return new Symbol(sym.CADENA, yyline, yycolumn, yytext());
             } 
             // fall through
           case 50: break;
-          case 24: 
-            { System.out.println(yytext());
+          case 25: 
+            { return new Symbol(sym.DECIMAL, yyline, yycolumn, yytext());
             } 
             // fall through
           case 51: break;
-          case 25: 
-            { System.out.println(yytext()); return new Symbol(sym.CADENA, yyline, yycolumn, yytext());
+          case 26: 
+            { return new Symbol(sym.CONJUNTO, yyline, yycolumn, yytext());
             } 
             // fall through
           case 52: break;
-          case 26: 
-            { System.out.println(yytext()); return new Symbol(sym.DECIMAL, yyline, yycolumn, yytext());
-            } 
-            // fall through
-          case 53: break;
-          case 27: 
-            { System.out.println(yytext());  return new Symbol(sym.CONJUNTO, yyline, yycolumn, yytext());
-            } 
-            // fall through
-          case 54: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }

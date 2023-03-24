@@ -5,7 +5,7 @@ import java.util.ArrayList;
 parser code
 {://codigo visible
 
-    ArrayList <Conjunto> CONJUNTOS = new ArrayList<Conjunto>();
+    public ArrayList <Tree> trees = new ArrayList<>();
 
     public void syntax_error(Symbol s){
         System.out.println("Error R de sintaxis: "+s.value +" Linea "+ (s.left+1)+ " Columna "+ (s.right+1));
@@ -13,13 +13,6 @@ parser code
     public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception{ 
         System.out.println("Error NR de sintaxis: "+ s.value +" Linea "+(s.left+1)+" columna "+(s.right+1) );
     }
-    public void getConjuntos(){
-        for (Conjunto conjunto : CONJUNTOS) {
-        System.out.println("Conjunto " + conjunto.Identificador + ": " + conjunto.notacion);
-        }
-    }
-
-    String concoma;
     
 
 :}
@@ -62,42 +55,68 @@ start with ini;
 
 ini::= COR_IZQ first PORC PORC PORC PORC last COR_DER;
 
-first ::= first:a instruccion
-            {:
-            System.out.println("la primera parte es "+a);
-            :}|
+first ::= first:a instruccion|
           instruccion;
 
-instruccion::= CONJUNTO DOS_PUNTOS IDENTIFICADOR:a GUION MAYOR notation:b PUNTOCOMA {:System.out.println("El identificador es: "+a+" Con la notacion: "+b);
-                //Conjunto conjunto = new Conjunto(a, b);
-                //CONJUNTOS.add(conjunto)
-                ;:}|   
-               IDENTIFICADOR GUION MAYOR expresion PUNTOCOMA;
+instruccion::= CONJUNTO DOS_PUNTOS IDENTIFICADOR:a GUION MAYOR notation:b PUNTOCOMA|   
+               IDENTIFICADOR GUION MAYOR expresion:a PUNTOCOMA{:trees.add(new Tree((NodoBin) a));:};
 
-notation::= CHAR_MAY:a EQUI CHAR_MAY:b {:System.out.println("El conjunto "+a+"-"+b);:}|
-            CHAR_MIN:a EQUI CHAR_MIN:b {:System.out.println("El conjunto "+a+"-"+b);:}|
-            NUM:a EQUI NUM:b {:System.out.println("El conjunto "+a+"-"+b);:}|
-            ASCII:a EQUI ASCII:b {:System.out.println("El conjunto "+a+"-"+b);:}|
-            con_coma:a {:System.out.println("El concoma es :"+concoma);:};
+notation::= CHAR_MAY EQUI CHAR_MAY|
+            CHAR_MIN EQUI CHAR_MIN|
+            NUM EQUI NUM|
+            ASCII EQUI ASCII|
+            con_coma;
 
-con_coma::= con_coma:a COMA normal:b {:concoma += b;:}|
+con_coma::= con_coma COMA normal|
             normal;
 
 
-normal::= CHAR_MAY:a {:System.out.println("ahora es: "+concoma); concoma = a;:}|
-          CHAR_MIN:a {:System.out.println("ahora es: "+concoma); concoma = a;:}|
-          GUION:a {:System.out.println("ahora es: "+concoma); concoma = a;:}|
-          ASCII:a {:System.out.println("ahora es: "+concoma); concoma = a;:}|
-          NUM:a {:System.out.println("ahora es: "+concoma); concoma = a;:};
+normal::= CHAR_MAY|
+          CHAR_MIN|
+          GUION|
+          ASCII|
+          NUM;
 
 
-expresion::= CONC expresion expresion|
-             DIS expresion expresion|
-             ASTERISCO expresion|
-             MAS expresion|
-             INTERROGACION expresion|
-             COR_IZQ IDENTIFICADOR COR_DER|
-             CARACTER;
+expresion::= CONC:a expresion:b expresion:c{:
+                NodoBin padre = new NodoBin(a);
+                padre.setLeft((NodoBin)b);
+                padre.setRight((NodoBin)c);
+                RESULT = padre;
+            :}|
+             DIS:a expresion:b expresion:c{:
+                NodoBin padre = new NodoBin(a);
+                padre.setLeft((NodoBin)b);
+                padre.setRight((NodoBin)c);
+                RESULT = padre;
+             :}|
+             ASTERISCO:a expresion:b{:
+                NodoBin padre = new NodoBin(a);
+                padre.setLeft((NodoBin) b);
+                RESULT = padre;
+             :}|
+             MAS:a expresion:b{:
+                NodoBin padre = new NodoBin(a);
+                padre.setLeft((NodoBin) b);
+                RESULT = padre;
+             :}|
+             INTERROGACION:a expresion:b {:
+                NodoBin padre = new NodoBin(a);
+                padre.setLeft((NodoBin) b);
+                RESULT = padre;
+             :}|
+             CARACTER:a {:
+                NodoBin leave = new NodoBin(a);
+                leave.setLeave(true);
+                leave.setAnulable(false);
+                RESULT = leave;
+             :}|
+             COR_IZQ IDENTIFICADOR:a COR_DER{:
+                NodoBin leave = new NodoBin(a);
+                leave.setLeave(true);
+                leave.setAnulable(false);
+                RESULT = leave;
+             :};
 
 
 
