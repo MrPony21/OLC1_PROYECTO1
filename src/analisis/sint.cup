@@ -14,6 +14,11 @@ parser code
         System.out.println("Error NR de sintaxis: "+ s.value +" Linea "+(s.left+1)+" columna "+(s.right+1) );
     }
     
+    public getTrees () {
+        trees.
+    
+    }
+    
 
 :}
 

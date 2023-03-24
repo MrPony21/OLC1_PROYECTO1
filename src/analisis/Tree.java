@@ -14,7 +14,7 @@ public class Tree {
 
     private NodoBin arbol;
     private int numeroNodo = 1;
-    private ArrayList <ArrayList> lista_siguientes = new ArrayList<>(); 
+    private ArrayList <Siguientes> lista_siguientes = new ArrayList<>(); 
 
     public Tree(NodoBin arbol) {
         NodoBin raiz = new NodoBin(".");
@@ -26,9 +26,12 @@ public class Tree {
         asignarNumeros(this.arbol);
         numeroNodo =0;
         calculos(this.arbol);
-        System.out.println(graficar(this.arbol,numeroNodo));
+        //System.out.println(graficar(this.arbol,numeroNodo));
+        printSiguientes();
+        generarTransiciones();
     }
     
+
     public String graficar(NodoBin nodo, int padre){
         
         String graph = "";
@@ -111,6 +114,12 @@ public class Tree {
         if(actual.isLeave()){
             actual.getPrimeros().add(actual.getNum());
             actual.getUltimos().add(actual.getNum());
+            
+            int numero = actual.getNum();
+            String lexema = (String)actual.getData();
+            Siguientes nuevo_sig = new Siguientes(numero,lexema);
+            lista_siguientes.add(nuevo_sig);
+            
             return;
         }
         
@@ -122,11 +131,56 @@ public class Tree {
             actual.setAnulable(true);
             actual.getPrimeros().addAll(actual.getLeft().getPrimeros());
             actual.getUltimos().addAll(actual.getLeft().getUltimos());
+            
+            ArrayList <Integer> UltimosC1 = actual.getLeft().getUltimos();
+            ArrayList <Integer> PrimerosC1 = actual.getLeft().getPrimeros();
+            
+            for (Integer ult: UltimosC1){
+                for(Siguientes sig: lista_siguientes){
+                    if (ult == sig.getNumeracion()){
+                        for(Integer prim: PrimerosC1){
+                            if(!(sig.getSig().contains(prim))){                               
+                                sig.getSig().add(prim);    
+                            }
+
+                        }
+
+                    }
+                    
+                }
+                
+                
+            }
+            
+            
         }else if (actual.getData().equals("+")){
             boolean nd = actual.getLeft().isAnulable();
             actual.setAnulable(nd);
             actual.getPrimeros().addAll(actual.getLeft().getPrimeros());
             actual.getUltimos().addAll(actual.getLeft().getUltimos());
+            
+            
+            ArrayList <Integer> UltimosC1 = actual.getLeft().getUltimos();
+            ArrayList <Integer> PrimerosC1 = actual.getLeft().getPrimeros();
+            
+            for (Integer ult: UltimosC1){               
+                for(Siguientes sig: lista_siguientes){
+                    if (ult == sig.getNumeracion()){ 
+                        for(Integer prim: PrimerosC1){
+                            if(!(sig.getSig().contains(prim))){  
+                                sig.getSig().add(prim);          
+                            }
+
+                        }
+
+                    }
+                    
+                }
+                
+                
+            }
+            
+            
         }else if (actual.getData().equals("?")){
             actual.setAnulable(true);
             actual.getPrimeros().addAll(actual.getLeft().getPrimeros());
@@ -156,11 +210,89 @@ public class Tree {
             }
             
             
+            ArrayList <Integer> UltimosC1 = actual.getLeft().getUltimos();
+            ArrayList <Integer> PrimerosC2 = actual.getRight().getPrimeros();
+            
+            for (Integer ult: UltimosC1){
+                for(Siguientes sig: lista_siguientes){
+                    if (ult == sig.getNumeracion()){ 
+                        for(Integer prim: PrimerosC2){                      
+                            if(!(sig.getSig().contains(prim))){
+                                sig.getSig().add(prim);      
+                            }
+                            
+                            
+ 
+                        }
+
+                    }
+                    
+                }
+                
+                
+            }
+            
         }
         
         
         
         
     }
+    
+    
+    public void printSiguientes(){
+        
+        
+        for (Siguientes sg: lista_siguientes){
+            
+            
+            System.out.println(sg.getNumeracion()+","+sg.getLexema()+","+sg.getSig());
+            
+        }
+        
+        
+        
+    }
+    
+    
+    public void generarTransiciones(){
+        
+        
+        ArrayList <ArrayList> nuevo = new ArrayList<>();
+        
+        for (int i = 0; i < lista_siguientes.size(); i++) {
+            
+            ArrayList <Object> nuevo2 = new ArrayList();
+            nuevo2.add(lista_siguientes.get(i).getNumeracion());
+            nuevo2.add(lista_siguientes.get(i).getLexema());
+            nuevo2.add(lista_siguientes.get(i).getSig());
+            
+            nuevo.add(nuevo2);
+            
+        }
+        
+        for (int i = 0; i < nuevo.size(); i++) {
+            
+            System.out.println(nuevo.get(i));
+            
+        }
+        
+        for(ArrayList item: nuevo){
+            System.out.println(item.get(0)+" - "+item.get(1)+ " - "+item.get(2));
+        }
+        
+        
+        tabla_transiciones transic = new tabla_transiciones();
+        tansic.crear_estados(nuevo);
+        
+        
+        
+        
+        
+        
+        
+    }
+    
+      
 
 }

@@ -273,7 +273,7 @@ public class frame extends javax.swing.JFrame {
                         "!>";
         
         try{
-            scanner scanner = new scanner(new java.io.StringReader(texto));
+            scanner scanner = new scanner(new java.io.StringReader(text));
             parser sint = new parser(scanner);
             sint.parse();
             System.out.println("Se ha analizado correctamente");
@@ -284,7 +284,7 @@ public class frame extends javax.swing.JFrame {
         
         
         
-        /*
+        
         
         //Aqui llamaremos para crear el arbol
         
@@ -335,7 +335,7 @@ public class frame extends javax.swing.JFrame {
         transicion.getTransition(raiz.first, table);
         
        
-       */
+       
        
         
         
